@@ -9,6 +9,13 @@
 <body>
 
 	<h1>getBoardList</h1>
+	
+	<select>
+			<option></option>
+		<c:forEach var="c" items="${categoryList }">
+			<option>${c.name }</option>
+		</c:forEach>
+	</select>
 
 	<table border="1">
 		<thead>
