@@ -1,8 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gd.sakila2.mapper.CustomerMapper">
+
+	<select id="selectCustomerList"
+			resultType="java.util.Map"
+			parameterType="java.util.Map">
+			
+		SELECT
+			customer_id customerId,
+			CONCAT(first_name, ' ' , last_name) name,
+			email,
+			store_id storeId,
+			if(customer_id IN(
+			
+				SELECT p.customer_id
+				FROM payment p
+				
+				LEFT JOIN rental r
+				ON p.rental_id=r.rental_id
+				
+				JOIN inventory i
+				ON r.inventory_id=i.inventory_id
+				
+				JOIN film f
+				ON i.film_id=f.film_id
+				
+				WHERE DATEDIFF(r.return_date, r.rental_date) > f.rental_duration
+				GROUP BY p.customer_id
+				
+				HAVING COUNT(p.customer_id)>=20),
+				'BLACK', '') blackList,
+
+			if(customer_id IN(
+			
+				SELECT p.customer_id
+				FROM payment AS p
+				
+				WHERE DATE(p.payment_date) BETWEEN DATE_SUB('2005-05-01', INTERVAL 1 MONTH) AND '2005-06-01'
+				GROUP BY customer_id
+				
+				HAVING SUM(p.amount) > 10
+				AND
+				
+				COUNT(customer_id) > 5),
+				'VIP','') VIP
+				
+		FROM customer
+		
+		<!-- 
+		
+		<where>
+			<if test="searchWord != null">
+				AND CONCAT(first_name, ' ' , last_name) LIKE ('%', ${searchWord}, '%')
+			</if>
+			<if test="storeId != null">
+				store_id = ${storeId}
+			</if>
+		</where>
+		LIMIT
+		${beginRow}, ${rowPerPage}
+		
+		 -->
+	</select>
 	
-	<select id = "selectCustomerList"
+	<select id = "selectCustomerOne"
 			resultType = "java.util.Map">
 		SELECT
 			cu.customer_id AS ID,
@@ -28,7 +89,8 @@
 			country
 		ON
 			city.country_id = country.country_id 
-			
+		WHERE
+			customer_id
 	</select>
 	
 </mapper>

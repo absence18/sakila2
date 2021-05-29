@@ -2,19 +2,42 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gd.sakila2.mapper.BoardMapper">
 
+	<select id="selectBoardTotal"
+			resultType = "int">
 	
+		SELECT
+			COUNT(*)
+		FROM
+			board
+			
+		<where>
+			<if test="searchWord != null">
+				board_title LIKE CONCAT('%', #{searchWord}, '%')
+			</if>
+		</where>
+		
+	</select>
 	
 	<select id="selectBoardList"
-			resultType="com.gd.sakila2.vo.Board">
+			resultType="com.gd.sakila2.vo.Board"
+			parameterType = "com.gd.sakila2.vo.PageParam">
 	
 		SELECT
 			board_id boardId,
 			board_title boardTitle,
-			board_content boardContent,
 			staff_id staffId,
-			insert_date insertDate,
-			last_update lastUpdate
+			insert_date insertDate
 		FROM board
+		
+		<where>
+			<if test="searchWord != null">
+				board_title LIKE CONCAT('%', #{searchWord}, '%')
+			</if>
+		</where>
+		
+		ORDER BY insert_date DESC
+		
+		LIMIT #{beginRow}, #{rowPerPage}
 	
 	</select>
 	

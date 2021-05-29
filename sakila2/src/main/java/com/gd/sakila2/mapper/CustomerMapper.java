@@ -9,5 +9,6 @@ import org.apache.ibatis.annotations.Mapper;
 public interface CustomerMapper {
 	
 	List<Map<String, Object>> selectCustomerList();
+	List<Map<String, Object>> selectCustomerOne();
 
 }

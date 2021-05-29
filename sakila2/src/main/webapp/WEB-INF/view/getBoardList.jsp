@@ -22,25 +22,35 @@
 			<tr>
 				<th>boardId</th>
 				<th>boardTitle</th>
-				<th>boardContent</th>
 				<th>staffId</th>
 				<th>insertDate</th>
-				<th>lastUpdate</th>
 			</tr>
 		</thead>
 		<tbody>
 			<c:forEach var="c" items="${boardList}">
 				<tr>
 					<td>${c.boardId }</td>
-					<td>${c.boardTitle }</td>
-					<td>${c.boardContent }</td>
+					<td><a href="${pageContext.request.contextPath }/getBoardOne?boardId=${b.boardId}">${c.boardTitle }</a></td>
 					<td>${c.staffId }</td>
 					<td>${c.insertDate }</td>
-					<td>${c.lastUpdate }</td>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
-
+	
+	<!-- 검색어 입력창 -->
+	<form action="/getBoardList" method="get">
+		<label for="searchWord">검색어(제목)</label>
+		<input name="searchWord" type="text">
+		<button type="submit">검색</button>
+	</form>
+	
+	<!-- 버턴 -->
+	<c:if test="${currentPage > 1 }">
+	<a href = "${pageContext.request.contextPath}/getBoardList?currentPage=${currentPage-1}">이전</a>
+	</c:if>
+	<c:if test="${currentPage < lastPage}">
+	<a href = "${pageContext.request.contextPath}/getBoardList?currentPage=${currentPage+1}">다음</a>
+	</c:if>
 </body>
 </html>
