@@ -11,8 +11,10 @@ import com.gd.sakila2.vo.PageParam;
 @Mapper
 public interface CustomerMapper {
 	
-	int selectCustomerTotal(String searchWord);
 	List<CustomerList> selectCustomerList(Map<String, Object> map);
+	int selectCustomerTotal(Map<String, Object> map);
+	List<Map<String, Object>> selectBlackCustomerList();
+	
 	List<Map<String, Object>> selectCustomerOne();
 
 }

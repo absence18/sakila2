@@ -22,35 +22,19 @@ public class CustomerService {
 	
 @Autowired CustomerMapper customerMapper;
 	
-	@GetMapping("/getCustomerList")
-	public List<CustomerList> getCustomerList(Map<String, Object> map) {
-		
-		int currentPage = (int) map.get("currentPage");
-		int rowPerPage = (int) map.get("rowPerPage");
-		String searchWord = (String) map.get("searchWord");
-		
-		PageParam pageParam = new PageParam();
-		pageParam.setBeginRow((currentPage - 1) * rowPerPage);
-		pageParam.setRowPerPage(rowPerPage);
-		log.debug("★★★★★★★ pageParam" + pageParam);
-		
-		Map<String, Object> parmMap = new HashMap<String, Object>();
-		parmMap.put("pageParam", pageParam);
-		parmMap.put("searchWord", searchWord);
-		log.debug("★★★★★★★ parmMap : " + parmMap);
-		
-		int totalPage = customerMapper.selectCustomerTotal(searchWord);
-		int lastPage = currentPage;
-		log.debug("★★★★★★★ totalPage" + totalPage);
-		log.debug("★★★★★★★ currentPage" + currentPage);
-		
-		List<CustomerList> customerList = customerMapper.selectCustomerList(map);
-		
-		Map<String, Object> returnMap = new HashMap<>();
-		returnMap.put("customerList", customerList);
-		returnMap.put("lastPage", lastPage);
-		
+	//고객 리스트 출력
+	public List<CustomerList> getCustomerList(Map<String,Object> map){
 		return customerMapper.selectCustomerList(map);
+	}
+
+	// 블랙 리스트 출력
+	public List<Map<String, Object>> getBlackCustomerList(){
+		return customerMapper.selectBlackCustomerList();
+	}
+
+	// 고객 리스트 페이징을 위한 total 수
+	public int getCustomerListTotal(Map<String,Object> map){
+		return customerMapper.selectCustomerTotal(map);
 	}
 
 }
