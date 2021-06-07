@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gd.sakila2.mapper.SalesMapper">
+
+	<select id = "selectTotalSales"
+			parameterType = "String"
+			resultType = "int">
+			
+		SELECT
+			COUNT(*)
+			
+		FROM
+			(SELECT
+			s.store_id storeId,
+			CONCAT(c.city, _utf8mb4',', cy.country) AS address,
+			CONCAT(m.first_name, _utf8mb4' ', m.last_name) AS manager,
+			SUM(p.amount) AS totalSales,
+			YEAR(p.payment_date) AS year,
+			MONTH(p.payment_date) AS month
+		FROM
+			payment AS p
+			INNER JOIN rental AS r ON p.rental_id = r.rental_id
+			INNER JOIN inventory AS i ON r.inventory_id = i.inventory_id
+			INNER JOIN store AS s ON i.store_id = s.store_id
+			INNER JOIN address AS a ON s.address_id = a.address_id
+			INNER JOIN city AS c ON a.city_id = c.city_id
+			INNER JOIN country AS cy ON c.country_id = cy.country_id
+			INNER JOIN staff AS m ON s.manager_staff_id = m.staff_id
+		
+		GROUP BY
+			s.store_id,
+			MONTH(p.payment_date)) t
+			
+		<where>
+			<if test="searchWord != null">
+				AND manager LIKE CONCAT('%', #{searchWord}, '%')
+			</if>
+		</where>
+			
+	</select>
+			
+
+	<!-- 선택된 해당 년도의 월별 매출 -->
+	<select id="selectMonthlySalesList"
+			parameterType = "com.gd.sakila2.vo.PageParam"
+			resultType="java.util.Map">
+			
+		SELECT
+			s.store_id storeId,
+			CONCAT(c.city, _utf8mb4',', cy.country) AS address,
+			CONCAT(m.first_name, _utf8mb4' ', m.last_name) AS manager,
+			SUM(p.amount) AS totalSales,
+			YEAR(p.payment_date) AS year,
+			MONTH(p.payment_date) AS month
+		FROM
+			payment AS p
+			INNER JOIN rental AS r ON p.rental_id = r.rental_id
+			INNER JOIN inventory AS i ON r.inventory_id = i.inventory_id
+			INNER JOIN store AS s ON i.store_id = s.store_id
+			INNER JOIN address AS a ON s.address_id = a.address_id
+			INNER JOIN city AS c ON a.city_id = c.city_id
+			INNER JOIN country AS cy ON c.country_id = cy.country_id
+			INNER JOIN staff AS m ON s.manager_staff_id = m.staff_id
+			
+		<where>
+			<if test="searchWord != null">
+				AND CONCAT(m.first_name, _utf8mb4' ', m.last_name) LIKE CONCAT('%', #{searchWord}, '%')
+			</if>
+		</where>
+		
+		GROUP BY
+			s.store_id,
+			MONTH(p.payment_date)
+			
+		ORDER BY
+			p.payment_date DESC
+			
+		LIMIT
+			#{beginRow}, #{rowPerPage}
+			
+	</select>
+
+</mapper>
