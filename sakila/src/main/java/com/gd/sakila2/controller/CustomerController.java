@@ -13,11 +13,28 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.gd.sakila2.service.CustomerService;
 import com.gd.sakila2.vo.CustomerList;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Controller
 public class CustomerController {
 
 	@Autowired
 	CustomerService customerService;
+	
+	// 고객 상세보기
+	@GetMapping("/getCustomerOne")
+	public String getCustomerOne(Model model, @RequestParam(value = "ID", required = false) Integer ID) {
+		log.debug("CustomerController에서 getCustomerOne -> ID: " + ID);
+
+		Map<String, Object> map = customerService.getCustomerOne(ID);
+		log.debug("CustomerController에서 getCustomerOne -> map: " + map);
+
+		model.addAttribute("map", map);
+		model.addAttribute("ID", ID);
+
+		return "getCustomerOne";
+	}
 
 	@GetMapping("/getCustomerList")
 	public String getCustomerList(Model model,
