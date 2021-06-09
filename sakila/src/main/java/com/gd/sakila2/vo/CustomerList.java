@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data
 public class CustomerList {
+	
    private int ID;
    private String name;
    private String address;
@@ -13,4 +14,5 @@ public class CustomerList {
    private String country;
    private String notes;
    private int SID;
+   
 }

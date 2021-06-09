@@ -17,6 +17,5 @@ public interface CustomerMapper {
 	int selectCustomerTotal(Map<String, Object> map);
 	List<Map<String, Object>> selectBlackCustomerList();
 	
-	List<Map<String, Object>> selectCustomerOne();
 
 }
