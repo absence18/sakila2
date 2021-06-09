@@ -10,6 +10,9 @@ import com.gd.sakila2.vo.CustomerList;
 @Mapper
 public interface CustomerMapper {
 	
+	// 고객 추가
+	int insertCustomer(Map<String, Object> map);
+	
 	// 고객 상세보기
 	Map<String, Object> selectCustomerOne(int ID);
 	

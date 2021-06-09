@@ -90,21 +90,21 @@ th {
 				<li class="next"><a href="${pageContext.request.contextPath}/getCustomerList?currentPage=${currentPage+1}&searchWord=${searchWord}">다음</a></li>
 			</c:if>
 			
+			<a class="btn btn-default" href="${pageContext.request.contextPath}/addCustomer">addCustomer</a>
+			
 		</ul>
 
 		<!-- 검색어 입력창 -->
 		<div class="text-center">
 		
 			<form action="${pageContext.request.contextPath}/getCustomerList" method="get">
+			
 				<label for="searchWord">검색어(제목) :</label>
 				<input name="searchWord" type="text">
 				<button type="submit">검색</button>
+				
 			</form>
 			
-		</div>
-
-		<div>
-			<a class="btn btn-default" href="${pageContext.request.contextPath}/addCustomer">고객 등록</a>
 		</div>
 
 	</div>

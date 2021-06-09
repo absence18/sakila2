@@ -19,6 +19,12 @@ public class CustomerService {
 	
 @Autowired CustomerMapper customerMapper;
 
+	// 고객 추가
+	public int addCustomer(Map<String, Object> map) {
+	
+		return customerMapper.insertCustomer(map);
+	}
+
 	//고객 상세보기
 	public Map<String, Object> getCustomerOne(Integer ID) {
 		log.debug("*************CustomerService에서 getCustomerOne -> ID :" + ID);

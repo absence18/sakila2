@@ -2,6 +2,35 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gd.sakila2.mapper.CustomerMapper">
 
+<!-- 고객 추가 -->
+	<insert id="insertCustomer"
+			parameterType="java.util.Map">
+	
+		INSERT INTO
+		
+			customer(
+				store_id,
+				first_name,
+				last_name,
+				email,
+				address_id,
+				active,
+				create_date
+				
+			) VALUES (
+				#{storeId},
+				#{firstName},
+				#{lastName},
+				#{email},
+				#{addressId},
+				#{active},
+				NOW()
+				
+			)
+			
+	</insert>
+   
+
 <!-- 고객 상세보기 -->
 	<select id="selectCustomerOne"
 			resultType="java.util.Map"
@@ -95,7 +124,7 @@
 		
 	</select>
 
-<!--  
+<!--  // 재범조 쿼리 //
 	<select id="selectCustomerList"
 			resultType="java.util.Map"
 			parameterType="java.util.Map">
