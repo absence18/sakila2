@@ -90,8 +90,6 @@ th {
 				<li class="next"><a href="${pageContext.request.contextPath}/getCustomerList?currentPage=${currentPage+1}&searchWord=${searchWord}">다음</a></li>
 			</c:if>
 			
-			<a class="btn btn-default" href="${pageContext.request.contextPath}/addCustomer">addCustomer</a>
-			
 		</ul>
 
 		<!-- 검색어 입력창 -->
@@ -105,8 +103,10 @@ th {
 				
 			</form>
 			
+			<div><a class="btn btn-default" href="${pageContext.request.contextPath}/addCustomer">addCustomer</a></div>
+			
 		</div>
-
+			
 	</div>
 	
 </body>
