@@ -20,11 +20,25 @@ import lombok.extern.slf4j.Slf4j;
 public class BoardService {
 	@Autowired BoardMapper boardMapper;
 	
+	// board 삭제
+	public int removeBoard(Board board) {
+		
+		return boardMapper.deleteBoard(board);
+	}
+	
+	// board 추가
+	public int addBoard(Board board) {
+		
+		return boardMapper.insertBoard(board);
+	}
+	
+	// board 상세보기
 	public Map<String, Object> getBoardOne(int boardId) {
 		
 		return boardMapper.selectBoardOne(boardId);
 	}
 	
+	// board 리스트
 	public Map<String, Object> getBoardList(int currentPage, int rowPerPage, String searchWord){ // <-- controller에서 받아오는 parameter
 		log.debug("BoardService의 getBoardList 실행...");
 		

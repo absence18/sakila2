@@ -11,6 +11,10 @@ import com.gd.sakila2.vo.Page;
 @Mapper
 public interface BoardMapper {
 	
+	// delete Board
+	int deleteBoard(Board board);
+	// insert Board
+	int insertBoard(Board board);
 	// Board One
 	Map<String, Object> selectBoardOne(int boardId);
 	// Board Total

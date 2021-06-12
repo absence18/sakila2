@@ -51,5 +51,10 @@
 	<c:if test="${currentPage < lastPage}">
 	<a href = "${pageContext.request.contextPath}/getBoardList?currentPage=${currentPage+1}">다음</a>
 	</c:if>
+	
+	<div>
+        <a href="${pageContext.request.contextPath}/addBoard">게시글 입력</a>
+    </div>
+	
 </body>
 </html>

@@ -3,6 +3,42 @@
 <mapper namespace="com.gd.sakila2.mapper.BoardMapper">
 
 <!--  -->
+	<delete id="deleteBoard"
+			parameterType="com.gd.sakila2.vo.Board">
+
+		DELETE FROM
+			board
+		WHERE
+			board_id = #{boardId}
+		AND
+			board_pw = PASSWORD(#{boardPw})
+	
+	</delete>
+
+<!--  -->
+	<insert id="insertBoard"
+			parameterType="com.gd.sakila2.vo.Board">
+			
+		INSERT INTO
+			board(
+				board_pw,
+				board_title,
+				board_content,
+				staff_id,
+				insert_date
+				
+			) VALUES (
+				PASSWORD(#{boardPw}),
+				#{boardTitle},
+				#{boardContent},
+				#{staffId},
+				NOW()
+			
+			)
+		
+	</insert>
+
+<!--  -->
 	<select id="selectBoardOne"
 			parameterType="Integer"
 			resultType="java.util.Map">

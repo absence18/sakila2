@@ -34,6 +34,8 @@
 			</tr>
 		
 	</table>
+	
+	<a class="btn btn-default" href="${pageContext.request.contextPath}/removeBoard?boardId=${boardOne.boardId}">삭제</a>
 
 </body>
 </html>
