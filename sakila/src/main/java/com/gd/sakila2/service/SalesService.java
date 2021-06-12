@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.gd.sakila2.mapper.SalesMapper;
-import com.gd.sakila2.vo.PageParam;
+import com.gd.sakila2.vo.Page;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -21,7 +21,7 @@ public class SalesService {
 	@Autowired SalesMapper salesMapper;
 	
 	// 월별 매출 목록
-	public Map<String, Object> getMonthlySalesList(PageParam pageParam) {
+	public Map<String, Object> getMonthlySalesList(Page pageParam) {
 		
 		Map<String, Object> returnMap = new HashMap<>();
 		

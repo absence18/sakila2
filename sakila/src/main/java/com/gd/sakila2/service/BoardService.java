@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.gd.sakila2.mapper.BoardMapper;
 import com.gd.sakila2.vo.Board;
-import com.gd.sakila2.vo.PageParam;
+import com.gd.sakila2.vo.Page;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -19,6 +19,11 @@ import lombok.extern.slf4j.Slf4j;
 @Transactional
 public class BoardService {
 	@Autowired BoardMapper boardMapper;
+	
+	public Map<String, Object> getBoardOne(int boardId) {
+		
+		return boardMapper.selectBoardOne(boardId);
+	}
 	
 	public Map<String, Object> getBoardList(int currentPage, int rowPerPage, String searchWord){ // <-- controller에서 받아오는 parameter
 		log.debug("BoardService의 getBoardList 실행...");
@@ -33,7 +38,7 @@ public class BoardService {
 		
 		int beginRow = (currentPage - 1) * rowPerPage;
 		
-		PageParam pageParam = new PageParam();
+		Page pageParam = new Page();
 		
 		pageParam.setBeginRow(beginRow);
 		pageParam.setRowPerPage(rowPerPage);

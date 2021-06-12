@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.gd.sakila2.service.SalesService;
-import com.gd.sakila2.vo.PageParam;
+import com.gd.sakila2.vo.Page;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -31,7 +31,7 @@ public class SalesController {
 		
 		int beginRow = (currentPage-1) * rowPerPage;
 		
-		PageParam pageParam = new PageParam();
+		Page pageParam = new Page();
 		
 		pageParam.setBeginRow(beginRow);
 		pageParam.setRowPerPage(rowPerPage);

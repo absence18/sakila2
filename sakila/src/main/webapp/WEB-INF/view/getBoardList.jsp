@@ -11,12 +11,11 @@
 	<h1>getBoardList</h1>
 	
 	<select>
-			<option></option>
 		<c:forEach var="c" items="${categoryList }">
 			<option>${c.name }</option>
 		</c:forEach>
 	</select>
-
+	
 	<table border="1">
 		<thead>
 			<tr>
@@ -30,7 +29,7 @@
 			<c:forEach var="c" items="${boardList}">
 				<tr>
 					<td>${c.boardId }</td>
-					<td><a href="${pageContext.request.contextPath }/getBoardOne?boardId=${b.boardId}">${c.boardTitle }</a></td>
+					<td><a href="${pageContext.request.contextPath }/getBoardOne?boardId=${c.boardId}">${c.boardTitle }</a></td>
 					<td>${c.staffId }</td>
 					<td>${c.insertDate }</td>
 				</tr>

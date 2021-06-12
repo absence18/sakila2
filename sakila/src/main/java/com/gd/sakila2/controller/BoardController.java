@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.gd.sakila2.service.BoardService;
 import com.gd.sakila2.service.CategoryService;
-import com.gd.sakila2.vo.Board;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -20,6 +19,16 @@ import lombok.extern.slf4j.Slf4j;
 public class BoardController {
 @Autowired BoardService boardService;
 @Autowired CategoryService categoryService;
+
+	@GetMapping("/getBoardOne")
+	public String getBoardOne(Model model, @RequestParam(value="boardId", required=true) int boardId) {
+		
+		Map<String, Object> boardOne = boardService.getBoardOne(boardId);
+		
+		model.addAttribute("boardOne", boardOne);
+		
+		return "getBoardOne";
+	}
 
 	@GetMapping("/getBoardList")
 	// model은 뷰로 넘겨주기 위한 상자, requestParam 뷰에서 받아 오는 parameter

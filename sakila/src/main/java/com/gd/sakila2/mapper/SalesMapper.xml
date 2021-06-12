@@ -42,7 +42,7 @@
 
 	<!-- 선택된 해당 년도의 월별 매출 -->
 	<select id="selectMonthlySalesList"
-			parameterType = "com.gd.sakila2.vo.PageParam"
+			parameterType = "com.gd.sakila2.vo.Page"
 			resultType="java.util.Map">
 			
 		SELECT

@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.gd.sakila2.mapper.CountryMapper;
 import com.gd.sakila2.vo.Country;
-import com.gd.sakila2.vo.PageParam;
+import com.gd.sakila2.vo.Page;
 
 @Service
 @Transactional
@@ -20,7 +20,7 @@ public class CountryService {
 	public Map<String, Object> getCountryList(int currentPage, int rowPerPage) {
 		// 1. 컨트롤러에서 보내어준 매개값을 가공....
 		int beginRow = (currentPage-1) * rowPerPage;
-		PageParam pageParam = new PageParam();
+		Page pageParam = new Page();
 		pageParam.setBeginRow(beginRow);
 		pageParam.setRowPerPage(rowPerPage);
 		
