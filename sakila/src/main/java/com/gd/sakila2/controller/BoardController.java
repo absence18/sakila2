@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.gd.sakila2.service.BoardService;
@@ -21,6 +22,24 @@ import lombok.extern.slf4j.Slf4j;
 public class BoardController {
 @Autowired BoardService boardService;
 @Autowired CategoryService categoryService;
+
+	@GetMapping("/modifyBoard")
+	public String modifyBoard(Model model, @RequestParam(value="boardId", required=true) int boardId) {
+		
+		Map<String, Object> boardOne = boardService.getBoardOne(boardId);
+		
+		model.addAttribute("boardOne", boardOne);
+		
+		return "/modifyBoard";
+	}
+	
+	@PostMapping("/modifyBoard")
+	public String modifyBoard(Board board) {
+		log.debug("@@@@@@@@@@@@@@@@@@@@@@@@@@@"+board.toString());
+		boardService.modifyBoard(board);
+		
+		return "redirect:/getBoardList";
+	}
 
 	@GetMapping("/removeBoard")
 	public String removeBoard(Model model, @RequestParam(value="boardId", required=true) int boardId) {

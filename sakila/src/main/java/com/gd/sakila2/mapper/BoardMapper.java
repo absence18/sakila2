@@ -11,6 +11,8 @@ import com.gd.sakila2.vo.Page;
 @Mapper
 public interface BoardMapper {
 	
+	// update Board
+	int updateBoard(Board board);
 	// delete Board
 	int deleteBoard(Board board);
 	// insert Board

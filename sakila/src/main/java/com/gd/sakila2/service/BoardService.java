@@ -20,6 +20,12 @@ import lombok.extern.slf4j.Slf4j;
 public class BoardService {
 	@Autowired BoardMapper boardMapper;
 	
+	// board 수정
+	public int modifyBoard(Board board) {
+		log.debug("@@@@@@@@@@@@@@@@@@@@@@@@@@@"+board.toString());
+		return boardMapper.updateBoard(board);
+	}
+	
 	// board 삭제
 	public int removeBoard(Board board) {
 		

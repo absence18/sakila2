@@ -35,6 +35,7 @@
 		
 	</table>
 	
+	<a class="btn btn-default" href="${pageContext.request.contextPath}/modifyBoard?boardId=${boardOne.boardId}">수정</a>
 	<a class="btn btn-default" href="${pageContext.request.contextPath}/removeBoard?boardId=${boardOne.boardId}">삭제</a>
 
 </body>
