@@ -9,7 +9,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.gd.sakila2.mapper.BoardMapper;
+import com.gd.sakila2.mapper.CommentMapper;
 import com.gd.sakila2.vo.Board;
+import com.gd.sakila2.vo.Comment;
 import com.gd.sakila2.vo.Page;
 
 import lombok.extern.slf4j.Slf4j;
@@ -19,6 +21,7 @@ import lombok.extern.slf4j.Slf4j;
 @Transactional
 public class BoardService {
 	@Autowired BoardMapper boardMapper;
+ 	@Autowired CommentMapper commentMapper;
 	
 	// board 수정
 	public int modifyBoard(Board board) {
@@ -41,7 +44,19 @@ public class BoardService {
 	// board 상세보기
 	public Map<String, Object> getBoardOne(int boardId) {
 		
-		return boardMapper.selectBoardOne(boardId);
+		log.debug("getBoardOne 에서 boardId : "+ boardId);
+		// 1) 상세 보기
+		Map<String, Object> boardMap = boardMapper.selectBoardOne(boardId);
+		log.debug("selectBoardOne 에서 boardMap: "+boardMap);
+		// 2) 댓글 목록
+		List<Comment> commentList = commentMapper.selectCommentList(boardId);
+		log.debug("commentList에서 size() "+commentList.size());
+
+		Map<String, Object> map = new HashMap<>();
+	    map.put("boardMap", boardMap);
+		map.put("commentList", commentList);
+
+		return map;
 	}
 	
 	// board 리스트
