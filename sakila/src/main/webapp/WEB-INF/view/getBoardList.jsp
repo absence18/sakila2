@@ -19,13 +19,13 @@
     <h1>getBoardList</h1>
 	<ul>
 		<li><a href="${pageContext.request.contextPath}/home">home</a></li>
-		<li><a href="${pageContext.request.contextPath}/getBoardList">BoardList</a></li>
-		<li><a href="${pageContext.request.contextPath}/getStaffList">StaffList</a></li>
-		<li><a href="${pageContext.request.contextPath}/getFilmList">FilmList</a></li>
-		<li><a href="${pageContext.request.contextPath}/getActorList">ActorList</a></li>
-		<li><a href="${pageContext.request.contextPath}/getCustomerList">CustomerList</a></li>
-		<li><a href="${pageContext.request.contextPath}/getInventoryList">InventoryList</a></li>
-		<li><a href="${pageContext.request.contextPath}/getSalesList">SalesList</a></li>
+		<li><a href="${pageContext.request.contextPath}/admin/getBoardList">BoardList</a></li>
+		<li><a href="${pageContext.request.contextPath}/admin/getStaffList">StaffList</a></li>
+		<li><a href="${pageContext.request.contextPath}/admin/getFilmList">FilmList</a></li>
+		<li><a href="${pageContext.request.contextPath}/admin/getActorList">ActorList</a></li>
+		<li><a href="${pageContext.request.contextPath}/admin/getCustomerList">CustomerList</a></li>
+		<li><a href="${pageContext.request.contextPath}/admin/getInventoryList">InventoryList</a></li>
+		<li><a href="${pageContext.request.contextPath}/admin/getSalesList">SalesList</a></li>
 	</ul>
     
     <table class="table table-striped">
@@ -40,7 +40,7 @@
             <c:forEach var="b" items="${boardList}">
                 <tr>
                 	<td>${b.boardId}</td>
-                    <td><a href="${pageContext.request.contextPath}/getBoardOne?boardId=${b.boardId}">${b.boardTitle}</a></td>
+                    <td><a href="${pageContext.request.contextPath}/admin/getBoardOne?boardId=${b.boardId}">${b.boardTitle}</a></td>
                     <td>${b.insertDate}</td>
                 </tr>
             </c:forEach>
@@ -56,14 +56,14 @@
     
     <ul class="pager">
         <c:if test="${currentPage > 1}">
-            <li class="previous"><a href="${pageContext.request.contextPath}/getBoardList?currentPage=${currentPage-1}&searchWord=${searchWord}">이전</a></li>
+            <li class="previous"><a href="${pageContext.request.contextPath}/admin/getBoardList?currentPage=${currentPage-1}&searchWord=${searchWord}">이전</a></li>
         </c:if>
         <c:if test="${currentPage < lastPage}">
-            <li class="next"><a href="${pageContext.request.contextPath}/getBoardList?currentPage=${currentPage+1}&searchWord=${searchWord}">다음</a></li>
+            <li class="next"><a href="${pageContext.request.contextPath}/admin/getBoardList?currentPage=${currentPage+1}&searchWord=${searchWord}">다음</a></li>
         </c:if>
     </ul>
     <div>
-        <a class="btn btn-default" href="${pageContext.request.contextPath}/addBoard">게시글 입력</a>
+        <a class="btn btn-default" href="${pageContext.request.contextPath}/admin/addBoard">게시글 입력</a>
     </div>
 </div>
 </body>

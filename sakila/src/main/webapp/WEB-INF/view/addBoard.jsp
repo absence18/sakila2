@@ -9,7 +9,7 @@
 
 	<h1>addBoard</h1>
 	
-	<form action="${pageContext.request.contextPath}/addBoard" method="post">
+	<form action="${pageContext.request.contextPath}/admin/addBoard" method="post">
 		<table border="1">
 		
 			<tr>

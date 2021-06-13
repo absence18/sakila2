@@ -34,7 +34,7 @@ th {
 		<h4>매장별 분류</h4>
 		<div>
 			<form
-				action="${pageContext.request.contextPath}/getInventoryList"
+				action="${pageContext.request.contextPath}/admin/getInventoryList"
 				method="get">
 				<div>
 					<select name="storeId">
@@ -87,18 +87,18 @@ th {
 		<ul class="pager">
 			<c:if test="${currentPage > 1}">
 				<li class="previous"><a
-					href="${pageContext.request.contextPath}/getInventoryList?currentPage=${currentPage-1}&searchWord=${searchWord}&storeId=${storeId}">이전</a></li>
+					href="${pageContext.request.contextPath}/admin/getInventoryList?currentPage=${currentPage-1}&searchWord=${searchWord}&storeId=${storeId}">이전</a></li>
 			</c:if>
 			<c:if test="${currentPage < lastPage}">
 				<li class="next"><a
-					href="${pageContext.request.contextPath}/getInventoryList?currentPage=${currentPage+1}&searchWord=${searchWord}&storeId=${storeId}">다음</a></li>
+					href="${pageContext.request.contextPath}/admin/getInventoryList?currentPage=${currentPage+1}&searchWord=${searchWord}&storeId=${storeId}">다음</a></li>
 			</c:if>
 		</ul>
 
 		<!-- 검색어 입력창 -->
 		<div class="text-center">
 			<form
-				action="${pageContext.request.contextPath}/getInventoryList"
+				action="${pageContext.request.contextPath}/admin/getInventoryList"
 				method="get">
 				<input type="hidden" name="storeId" value="${storeId}"> <label
 					for="searchWord">검색어 :</label> <input name="searchWord" type="text"
@@ -109,7 +109,7 @@ th {
 
 		<div>
 			<a class="btn btn-default"
-				href="${pageContext.request.contextPath}/addInventory">재고
+				href="${pageContext.request.contextPath}/admin/addInventory">재고
 				추가</a>
 		</div>
 	</div>

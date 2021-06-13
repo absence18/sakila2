@@ -30,7 +30,7 @@
 <div class="container">
 
     <h1>BoardOne</h1>
-    <form action="${pageContext.request.contextPath}/modifyBoard" id="modifyForm" method="post">
+    <form action="${pageContext.request.contextPath}/admin/modifyBoard" id="modifyForm" method="post">
 	    <table class="table">
 	         <tbody>
 	            <tr>
@@ -67,7 +67,7 @@
 	        </tbody>
 	    </table>
 	    <button id="btn" type="button">수정</button>
-        <a class="btn btn-default" href="${pageContext.request.contextPath}/getBoardList">글목록</a>
+        <a class="btn btn-default" href="${pageContext.request.contextPath}/admin/getBoardList">글목록</a>
     </form>
     </div>
 </body>

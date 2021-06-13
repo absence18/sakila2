@@ -64,10 +64,10 @@
 		</table>
 	</div>
 	<c:if test="${currentPage > 1 }">
-	<a href = "${pageContext.request.contextPath}/getSalesList?currentPage=${currentPage - 1}&searchWord=${searchWord}">이전</a>
+	<a href = "${pageContext.request.contextPath}/admin/getSalesList?currentPage=${currentPage - 1}&searchWord=${searchWord}">이전</a>
 	</c:if>
 	<c:if test="${currentPage < lastPage }">
-	<a href = "${pageContext.request.contextPath}/getSalesList?currentPage=${currentPage + 1}&searchWord=${searchWord}">다음</a>
+	<a href = "${pageContext.request.contextPath}/admin/getSalesList?currentPage=${currentPage + 1}&searchWord=${searchWord}">다음</a>
 	</c:if>
 	
 </body>

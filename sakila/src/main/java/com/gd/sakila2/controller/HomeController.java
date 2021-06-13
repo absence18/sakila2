@@ -2,11 +2,13 @@ package com.gd.sakila2.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Controller
+@RequestMapping("/admin")
 public class HomeController {
 	//Logger log = LoggerFactory.getLogger(this.getClass()); // 항상 this.getClass() 로 적어줌, 매개변수를 자기 클래스로 들어가면 된다.
 	@GetMapping({"/", "/home", "/index"})

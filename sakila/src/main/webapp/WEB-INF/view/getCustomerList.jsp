@@ -67,7 +67,7 @@ th {
 				<c:forEach var="c" items="${customerList}">
 					<tr>
 						<td class="col-sm-1 text-center">${c.ID}</td>
-						<td><a href="${pageContext.request.contextPath}/getCustomerOne?ID=${c.ID}">${c.name}</a></td>
+						<td><a href="${pageContext.request.contextPath}/admin/getCustomerOne?ID=${c.ID}">${c.name}</a></td>
 						<td class="col-sm-2 text-center">${c.address}</td>
 						<td class="col-sm-1 text-center">${c.zipCode}</td>
 						<td class="col-sm-1 text-center">${c.phone}</td>
@@ -83,11 +83,11 @@ th {
 		<ul class="pager">
 		
 			<c:if test="${currentPage > 1}">
-				<li class="previous"><a href="${pageContext.request.contextPath}/getCustomerList?currentPage=${currentPage-1}&searchWord=${searchWord}">이전</a></li>
+				<li class="previous"><a href="${pageContext.request.contextPath}/admin/getCustomerList?currentPage=${currentPage-1}&searchWord=${searchWord}">이전</a></li>
 			</c:if>
 			
 			<c:if test="${currentPage < lastPage}">
-				<li class="next"><a href="${pageContext.request.contextPath}/getCustomerList?currentPage=${currentPage+1}&searchWord=${searchWord}">다음</a></li>
+				<li class="next"><a href="${pageContext.request.contextPath}/admin/getCustomerList?currentPage=${currentPage+1}&searchWord=${searchWord}">다음</a></li>
 			</c:if>
 			
 		</ul>
@@ -95,7 +95,7 @@ th {
 		<!-- 검색어 입력창 -->
 		<div class="text-center">
 		
-			<form action="${pageContext.request.contextPath}/getCustomerList" method="get">
+			<form action="${pageContext.request.contextPath}/admin/getCustomerList" method="get">
 			
 				<label for="searchWord">검색어(제목) :</label>
 				<input name="searchWord" type="text">
@@ -103,7 +103,7 @@ th {
 				
 			</form>
 			
-			<div><a class="btn btn-default" href="${pageContext.request.contextPath}/addCustomer">addCustomer</a></div>
+			<div><a class="btn btn-default" href="${pageContext.request.contextPath}/admin/addCustomer">addCustomer</a></div>
 			
 		</div>
 			

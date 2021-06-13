@@ -36,7 +36,7 @@ $(document).ready(function(){
 	<div class="container">
 		<h1>addCustomer</h1>
 		<form id="addForm" method="post"
-			action="${pageContext.request.contextPath}/addCustomer">
+			action="${pageContext.request.contextPath}/admin/addCustomer">
 			<table class="table table-striped">
 				<tr>
 					<td>storeId</td>

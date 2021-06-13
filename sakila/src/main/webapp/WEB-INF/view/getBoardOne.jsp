@@ -41,9 +41,9 @@
             </tr>
         </tbody>
     </table>
-    <a class="btn btn-default" href="${pageContext.request.contextPath}/modifyBoard?boardId=${boardOne.boardId}">수정</a>
-    <a class="btn btn-default" href="${pageContext.request.contextPath}/removeBoard?boardId=${boardOne.boardId}">삭제</a>
-    <a class="btn btn-default" href="${pageContext.request.contextPath}/getBoardList">글목록</a>
+    <a class="btn btn-default" href="${pageContext.request.contextPath}/admin/modifyBoard?boardId=${boardOne.boardId}">수정</a>
+    <a class="btn btn-default" href="${pageContext.request.contextPath}/admin/removeBoard?boardId=${boardOne.boardId}">삭제</a>
+    <a class="btn btn-default" href="${pageContext.request.contextPath}/admin/getBoardList">글목록</a>
 	<!-- 댓글 목록 -->
 	<div>
 		<div><a href=""><button type="button">댓글추가</button></a></div>
