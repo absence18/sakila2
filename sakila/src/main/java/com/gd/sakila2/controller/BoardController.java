@@ -31,7 +31,7 @@ public class BoardController {
 		
 		model.addAttribute("boardOne", boardOne);
 		
-		return "/modifyBoard";
+		return "modifyBoard";
 	}
 	
 	@PostMapping("/modifyBoard")
